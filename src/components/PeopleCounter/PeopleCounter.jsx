@@ -32,6 +32,8 @@ const PeopleCounter = () => {
 			.then((res) => res.text())
 			.then((data) => formatData(data))
 			.catch((err) => console.error(err));
+		console.log('api call');
+		setTimeout(requestCamera, 1000);
 	}
 
 	function formatData(data) {
