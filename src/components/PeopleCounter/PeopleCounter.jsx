@@ -28,7 +28,12 @@ const PeopleCounter = () => {
 	async function requestCamera() {
 		const client = new DigestFetch(auth.name, auth.pass);
 		client
-			.fetch(url, {})
+			.fetch(url, {
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+				},
+				mode: 'no-cors',
+			})
 			.then((res) => res.text())
 			.then((data) => formatData(data))
 			.catch((err) => console.error(err));
