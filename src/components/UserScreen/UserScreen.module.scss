@@ -20,6 +20,7 @@
     position: absolute;
     top:var(--paddingY);
     left: var(--paddingX);
+
 	span {
 		font-weight: 600;
 		font-size: 1.6vw;
@@ -35,7 +36,7 @@
 
 .Icon {
 	position: relative;
-	width: 25vw;
+	width: auto;
 	height: 25vw;
 
 	svg {
@@ -57,9 +58,11 @@
 
 .Body {
     margin-top:30px;
+
 	h1 {
 		font-size: 3vw;
 		color: var(--white);
         margin-top:30px;
+		text-align: center;
 	}
 }

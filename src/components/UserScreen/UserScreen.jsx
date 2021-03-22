@@ -6,10 +6,8 @@ import Pedestrian from 'assets/svgs/walking.svg';
 import Hand from 'assets/svgs/hand-paper.svg';
 
 const UserScreen = ({ limit, entered, exited, inside }) => {
-	// const [allowed, setallowed] = useState(entered < limit);
-	const [allowed, setallowed] = useState(true);
+	const [allowed, setallowed] = useState(entered < limit);
 	console.log('limit', limit, 'entered', entered, 'exited', exited, 'inside', inside);
-
 	return (
 		<div className={s.Screen} allowed={allowed.toString()}>
 			<div className={s.PeopleCount}>
@@ -28,7 +26,13 @@ const UserScreen = ({ limit, entered, exited, inside }) => {
 						</>
 					)}
 				</div>
-				<h1>{allowed ? 'IEEJA ATĻAUTA' : 'IEEJA AIZLIEGTA'}</h1>
+				<h1>
+					{allowed
+						? 'IEEJA ATĻAUTA'
+						: (!allowed && entered && exited && inside)
+						? 'IEEJA AIZLIEGTA'
+						: 'KĻŪME IEGŪSTOT DATUS'}{' '}
+				</h1>
 			</div>
 		</div>
 	);

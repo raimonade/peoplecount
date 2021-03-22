@@ -27,9 +27,11 @@ const PeopleCounter = () => {
 	const limit = 1;
 	async function requestCamera() {
 		const client = new DigestFetch(auth.name, auth.pass);
-		client.fetch(url, {})
+		client
+			.fetch(url, {})
 			.then((res) => res.text())
-			.then((data) => formatData(data));
+			.then((data) => formatData(data))
+			.catch((err) => console.error(err));
 	}
 
 	function formatData(data) {
@@ -52,16 +54,15 @@ const PeopleCounter = () => {
 
 	useEffect(() => {
 		requestCamera();
-		// formatData(exampleData);
 	}, []);
 
 	return (
 		<div className={s.Wrapper}>
 			<UserScreen
 				limit={limit}
-				entered={apiData.EnteredSubtotal || 0}
-				exited={apiData.ExitedSubtotal || 0}
-				inside={apiData.InsideSubtotal || 0}
+				entered={apiData.EnteredSubtotal}
+				exited={apiData.ExitedSubtotal}
+				inside={apiData.InsideSubtotal}
 			/>
 		</div>
 	);
